@@ -1,0 +1,58 @@
+//Importing Scanner class
+import java.util.*;
+
+class Ordering_Teams {
+    public static void main(String args[])
+    {
+        //Creating Scanner object for taking input
+        Scanner sc = new Scanner(System.in);
+
+        //Input number of test cases
+        int t=sc.nextInt();
+        int a=0;
+        
+        //For loop for test cases
+        for (int q=1;q<=t ;q++){
+
+            //Decalring a two dimensional array to store the scores of three people
+            int[][] p = new int[4][3];
+
+            //Taking input of array of values            
+            for(int i=0 ; i<3 ; i++ ){
+                for(int j=0 ; j<3 ; j++ ){
+                    p[i][j] = sc.nextInt();
+                }
+            }
+            
+            //Creating one dummy row and copying the 1st row values for reference
+            p[3][0]= p[0][0];
+            p[3][1]= p[0][1];
+            p[3][2]= p[0][2];    
+            
+            for(int i=0 ; i<3 ; i++ ){
+                    
+                //If any two rows have the same values then the order is not possible
+                if(p[i][0] == p[i+1][0] && p[i][1] == p[i+1][1] && p[i][2] == p[i+1][2]) {
+
+                }
+
+                //If one of the two rows is greater than the other row then the order is possible
+                else if(p[i][0] >= p[i+1][0] && p[i][1] >= p[i+1][1] && p[i][2] >= p[i+1][2]) {
+                    a++;
+                }
+
+                //If one of the two rows is lesser than the other row then the order is possible
+                else if(p[i][0] <= p[i+1][0] && p[i][1] <= p[i+1][1] && p[i][2] <= p[i+1][2]) {
+                    a++;
+                }
+            }
+            
+            //If either of the 3 rows is lesser or greater than the other rows then we print YES otherwise NO
+            if(a==3)
+                System.out.println("yes");
+            else
+                System.out.println("no");        
+        }
+        sc.close();
+    }
+}
